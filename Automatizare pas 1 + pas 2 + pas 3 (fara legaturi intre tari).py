@@ -31,7 +31,7 @@ for i in v:
             print("     ",end=" ",sep="")
             tmp//=2
             c-=1
-            binn+="0"
+            binn+="0" 
     print()
     binn=binn+"0"*(8-len(binn))
     print("   ",*list(binn),sep="     ")
