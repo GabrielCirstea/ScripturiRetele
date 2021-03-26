@@ -17,5 +17,10 @@ genera comenzile de configurare standard pentru un switch
 	* parolele sunt mereu aceleas (probleme de securitate, stiu stiu)
 	* in interirorul scriptului sunt variabilele ce vor fi inlocuite in template
 pentru a genera configurarea dorita
+* Automatizare pas 1 + pas 2 + pas 3 (fara legaturi intre tari).py: Face pasul 1, 2 si 3 
+(NA,BA,RA pentru primul IP si pentru fiecare tara)
 
-Este foarte posibil sa mai vina si alte **ajutoare**.
+~~Este foarte posibil sa mai vina si alte **ajutoare**.~~
+
+Ajutoarele au venit! Uh... ajutorul, ca nu-s asa gras. (La naiba cu pandemia asta)
+~Marius
