@@ -1,3 +1,4 @@
+# get the date by itself
 from datetime import datetime
 """SwMATE
 si tactu politist
