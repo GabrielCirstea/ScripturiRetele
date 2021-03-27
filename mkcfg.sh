@@ -6,7 +6,7 @@
 # variabile necesare
 HOSTNAME="Sw-ITALIA"
 BANER="Azi e soare afara"
-DATE="16:55:0 26 Mar 2021"
+DATE=$(date +"%H:%M:%S %d %b %Y")
 DOMAIN="minfo.ro"
 MESAJ="Acesul persoanelor neautorizate este strict interzis"
 IP="156.176.0.2"
