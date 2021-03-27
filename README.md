@@ -19,6 +19,12 @@ genera comenzile de configurare standard pentru un switch
 pentru a genera configurarea dorita
 * Automatizare pas 1 + pas 2 + pas 3 (fara legaturi intre tari).py: Face pasul 1, 2 si 3 
 (NA,BA,RA pentru primul IP si pentru fiecare tara)
+* configSwitch.py: genereaza secventa de comenzi pentru configurarea switch-ului
+asemanator cu *mkcfg.sh*
+	* scriptul primeste valorile pentru hostname, baner etc de la stdin
+	* aici data este generata automat
+* configRouter.py: echivalent cu *configSwitch.py*, adauga cateva comenzi
+suplimentare pentru configurarea routerului, plus interfete suplimentare
 
 ~~Este foarte posibil sa mai vina si alte **ajutoare**.~~
 
