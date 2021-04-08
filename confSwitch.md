@@ -6,7 +6,7 @@
 enable  
 configure terminal  
 * opreste cautarea automata de domenii  
-no ip domain-look  
+no ip domain-lookup  
 * seteaza un nume  
 hostname <nume>  
 * opreste cdp-ul...cand o sa aflu ce inseamna o sa scriu  

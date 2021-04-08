@@ -10,7 +10,7 @@ enable
 
 configure terminal
 
-no domain-lookup
+no ip domain-lookup
 
 hostname <name>
 
@@ -93,7 +93,7 @@ enable
 
 configur terminal
 
-interface giga 1
+interface giga 0/1
 
 description Legatura cu o alta retea
 

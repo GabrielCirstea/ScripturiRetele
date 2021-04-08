@@ -38,7 +38,7 @@ login local
 exit
 crypto key generate rsa
 
-interface giga 1
+interface giga 0/1
 description <mesajDescriere>
 ip address <ip> <mask>
 no shutdown
