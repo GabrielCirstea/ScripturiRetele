@@ -41,5 +41,8 @@ description <mesajDescriere>
 ip address <ip> <mask>
 no shutdown
 exit
+
+ip default-gateway <gateway>
+
 exit
 copy running-config startup-config
