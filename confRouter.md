@@ -114,3 +114,20 @@ ip address <ex 10.10.10.9> <masca: no mai stiu 255.255.255.0>
 no shutdown
 
 end
+
+## Routing
+
+```
+ip route <ip> <mask> <interfata>
+```
+
+ex: ip route 124.144.96.0 255.255.240 serial 0/0/0
+
+## DHCP
+
+* permiterea asignarii dinamice de ip-uri
+* se face prin specificarea adresei serverullui de DHCP
+
+```
+ip address-helper <ip>
+```

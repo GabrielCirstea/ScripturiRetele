@@ -23,7 +23,7 @@ enable secret ciscosecpa55
 * banner: motd = mesajul zilei...  
 banner motd S Vineri la ora 14:00 serverul va intra in mentenanta S
 
-## configurarea liniilor de comanda...cred
+## configurarea liniilor de comanda
 
 line console 0  
 * seteaza parola  
@@ -48,6 +48,7 @@ exit
 exit  
 * salvam configurarile  
 copy running-config startup-config  
+
 * afisam ora  
 show clock  
 * setam ora  
@@ -57,6 +58,9 @@ configure terminal
 * setam domain-name-ul  
 ip domain-name minfo.ro  
 * cont de admin si parola  
+
+## setare ssh
+
 username Admin01 privilege 15 secret Admin01pa55  
 * configrare pentru ssh pe liniile virtuale  
 line vty 0 15  
@@ -72,4 +76,21 @@ description Legatura cu LAN 193.168.213.0/24
 ip address <ip> <mask>
 no shutdown
 
+## interface range
+
+* accesam toate interfetele fastEthernet in acelas timp
+
+interface range fast 0/1-24
+
+* oprim toate interfetele fastEthernet 
+
+shutdown
+
+## default getway
+
+* setam getway-ul, se face din **#(config)**
+
+ip defaul-getway <ip>
+
+## salvare
 copy running-config startup-config
