@@ -10,6 +10,7 @@ enable password ciscoenapa55
 enable secret ciscosecpa55
 
 banner motd $<banner>$
+banner login $Acesul persoanelor neautorizate este stict interzis$
 
 line console 0
 password ciscoenapa55
@@ -38,7 +39,7 @@ login local
 exit
 crypto key generate rsa
 
-interface giga 0/1
+interface giga 0/0
 description <mesajDescriere>
 ip address <ip> <mask>
 no shutdown

@@ -5,19 +5,19 @@
 # a se modifica HOSTNAME, IP, MASK
 
 # variabile necesare
-HOSTNAME="R-ITALIA"
-BANER="Azi e soare afara"
+HOSTNAME="R3"
+BANER="Router-ul 3"
 DATE=$(date +"%H:%M:%S %d %b %Y")
 DOMAIN="minfo.ro"
 MESAJ="Acesul persoanelor neautorizate este strict interzis"
-IP="156.176.0.2"
-MASK="255.255.240.0"
+IP="8.0.0.0"
+MASK="255.0.0.0"
 
 # pentru interfata de serial
 SERIAL="0/0/0"
 MESAJSERIAL="Acesul persoanelor neautorizate este strict interzis"
-IPSERIAL="156.176.0.2"
-MASKSERIAL="255.255.240.0"
+IPSERIAL="10.0.0.1"
+MASKSERIAL="255.255.255.0"
 
 TEMPLATE_FILE=templateRouter.txt
 OUT_FILE=out.txt
