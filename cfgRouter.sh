@@ -12,6 +12,7 @@ DOMAIN="minfo.ro"
 MESAJ="Acesul persoanelor neautorizate este strict interzis"
 IP="8.0.0.0"
 MASK="255.0.0.0"
+HELPER="10.0.0.254"		# serverul DHCP
 
 # pentru interfata de serial
 SERIAL="0/0/0"
@@ -37,3 +38,4 @@ sed -i "s|<serial>|$SERIAL|" $OUT_FILE
 sed -i "s|<mesajDescriereSerial>|$MASK|" $OUT_FILE
 sed -i "s|<ipSerial>|$IPSERIAL|" $OUT_FILE
 sed -i "s|<maskSerial>|$MASKSERIAL|" $OUT_FILE
+sed -i "s|<helper>|$HELPE|" $OUT_FILE

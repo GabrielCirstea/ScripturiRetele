@@ -26,3 +26,4 @@ sed -i "s|<domainName>|$DOMAIN|" $OUT_FILE
 sed -i "s|<mesajDescriere>|$MESAJ|" $OUT_FILE
 sed -i "s|<ip>|$IP|" $OUT_FILE
 sed -i "s|<mask>|$MASK|" $OUT_FILE
+sed -i "s|<gateway>|$GATEWAY|" $OUT_FILE
