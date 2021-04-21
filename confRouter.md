@@ -127,7 +127,8 @@ ex: ip route 124.144.96.0 255.255.240 serial 0/0/0
 
 * permiterea asignarii dinamice de ip-uri
 * se face prin specificarea adresei serverullui de DHCP
+* se apeleaza din interfata catre reteaua in care se asigneaza automat ip-urile
 
 ```
-ip address-helper <ip>
+ip helper-address <ip>
 ```
