@@ -1,5 +1,5 @@
-primary_ip = input("Read primary IP: ")
-#primary_ip = "156.179.253.222/14"
+#primary_ip = input("Read primary IP: ")
+primary_ip = "124.145.200.199/15"
 
 print("Primary IP adress:",primary_ip)
 
@@ -7,7 +7,7 @@ v, w = primary_ip.split("/")
 v = v.split(".")
 
 print()
-
+aux=""
 for i in v:
     binn=""
     c=7
@@ -31,19 +31,25 @@ for i in v:
             print("     ",end=" ",sep="")
             tmp//=2
             c-=1
-            binn+="0" 
+            binn+="0"
+    
     print()
     binn=binn+"0"*(8-len(binn))
     print("   ",*list(binn),sep="     ")
     print()
+    print(binn)
+    aux+=binn
 
 print()
 
-v = "".join([bin(int(i))[2:] for i in v])
+v = aux
+print("vv=",v)
+#v = "".join([bin(int(i))[2:] for i in v])
+
 tmp = "1"*int(w)+"0"*(32-int(w))
-v1 = bin(int(v,2)&int(tmp,2))[2:]
+v1 = "0"*(32-len(bin(int(v,2)&int(tmp,2))[2:]))+bin(int(v,2)&int(tmp,2))[2:]
 inv = "".join(["1" if i=="0" else "0" for i in tmp])
-inv1 = bin(int(v1,2)|int(inv,2))[2:]
+inv1 = "0"*(32-len(bin(int(v1,2)|int(inv,2))[2:]))+bin(int(v1,2)|int(inv,2))[2:]
 NA = ".".join([str(int(v1[i:i+8],2)) for i in range(0,32,8)])+"/"+w
 BA = ".".join([str(int(inv1[i:i+8],2)) for i in range(0,32,8)])+"/"+w
 
@@ -109,15 +115,15 @@ print("\n\n\n")
 
 countries = []
 
-while(" "):
+"""while(" "):
     aux = input("Introduce a country: ")
     if aux=="0":
         break
-    countries.append((aux,int(input("Introduce number: "))))
+    countries.append((aux,int(input("Introduce number: "))))"""
 
-#countries = [['ITALIA', 4094], ['ISRAEL', 2046], ['ISLANDA', 2046]]
+countries = [['GORJ', 8191], ['GORJ', 7], ['GENEVA', 4095]]
 
-countries = sorted(countries, key=lambda x: -x[1])
+#countries = sorted(countries, key=lambda x: -x[1])
 
 for i in range(len(countries)):
     j = 0
@@ -125,10 +131,9 @@ for i in range(len(countries)):
         j+=1
     countries[i].extend([j, 32-j])
 
-
 for k in countries:
 
-    print(str(k[0])+": "+str(k[1])+"H","32 -",j,"=",32-j)
+    print(str(k[0])+": "+str(k[1])+"H","32 -",k[2],"=",k[3])
 
     v, w = NA.split("/")
     v = v.split(".")
@@ -170,9 +175,9 @@ for k in countries:
     
     v = "".join(["0"*(8-len(bin(int(i))[2:]))+bin(int(i))[2:] for i in v])
     tmp = "1"*int(w)+"0"*(32-int(w))
-    v1 = bin(int(v,2)&int(tmp,2))[2:]
+    v1 = "0"*(32-len(bin(int(v,2)&int(tmp,2))[2:]))+bin(int(v,2)&int(tmp,2))[2:]
     inv = "".join(["1" if i=="0" else "0" for i in tmp])
-    inv1 = bin(int(v1,2)|int(inv,2))[2:]
+    inv1 = "0"*(32-len(bin(int(v1,2)|int(inv,2))[2:]))+bin(int(v1,2)|int(inv,2))[2:]
     NA = ".".join([str(int(v1[i:i+8],2)) for i in range(0,32,8)])+"/"+w
     BA = ".".join([str(int(inv1[i:i+8],2)) for i in range(0,32,8)])+"/"+w
 
