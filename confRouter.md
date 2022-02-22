@@ -6,6 +6,7 @@ Placa suplimentara: *HWIC-2T*
 
 ## Pasi
 
+```
 enable
 
 configure terminal
@@ -19,8 +20,11 @@ no cdp run
 service password-encryption
 
 security passwords min-length 10
+```
 
 * timp blocare, incercari in interval de timp  
+
+```
 login block-for 50 attempts 3 within 15
 
 enable password ciscoenapa55
@@ -86,9 +90,11 @@ no shutdown
 end
 
 copy running-config startup-config
+```
 
 ## Atle interfete
 
+```
 enable
 
 configur terminal
@@ -102,9 +108,11 @@ ip addres <alta adressa: 192.168.113.64> <masca: 255.255.255.224>
 no shutdown
 
 end
+```
 
 ### serial
 
+```
 interface serial 0/0/0
 
 description Legatura cu alt router
@@ -114,6 +122,7 @@ ip address <ex 10.10.10.9> <masca: no mai stiu 255.255.255.0>
 no shutdown
 
 end
+```
 
 ## Routing
 
