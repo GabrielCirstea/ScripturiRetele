@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ADDR_SIZE 4
+
 char* mystrtok(char* str, char delim)
 {
 	static char *sir = NULL;
@@ -203,24 +205,37 @@ void calcNB(char NB[4], char NA[4], char mask)
 	}
 }
 
-int main(int argc, char **argv)
+/* Get the next address on IPv4
+ * @mask - not used yet
+ * @return - 0 on succes, we only have succes so far */
+int get_next_addr(unsigned char old[ADDR_SIZE], unsigned char new[ADDR_SIZE], int mask)
 {
-	if(argc !=3)
-	{
-		printf("Usage: %s <ip> <range>\n", argv[0]);
-		return 1;
+	for(int i=0; i<ADDR_SIZE; ++i)
+		new[i] = old[i];
+	char reminder = 0;
+	for(int i=ADDR_SIZE-1; i>=0; --i) {
+		unsigned char c = new[i];
+		new[i] += reminder + 1;
+		reminder = 0;
+		// overflow
+		if(new[i] < c) {
+			reminder = 1;
+			new[i] = 0;
+		}
+		if(!reminder)
+			break;
 	}
 
-	unsigned char ip[4];
-	char mask = atoi(argv[2]);
-	getIp(ip,argv[1]);
+	return 0;
+}
+
+int print_nice_ips(unsigned char ip[ADDR_SIZE], char mask, int binMask
+		, unsigned char NA[ADDR_SIZE], unsigned char NB[ADDR_SIZE])
+{
 	printBinIp(ip);
 	printf("Masca: ");
 	printBinMask(mask);
-	int binMask = makeMask(mask);
 
-	unsigned char NA[4];
-	calcNA(NA, ip, binMask);
 
 	printf("\n");
 	printf("\n");
@@ -230,10 +245,46 @@ int main(int argc, char **argv)
 	printf("N.A. = ");
 	printIp(NA);
 
-	unsigned char NB[4];
-	calcNB(NB, NA, mask);
 	printf("B.A. = ");
 	printIp(NB);
+}
+
+int main(int argc, char **argv)
+{
+	if(argc < 3)
+	{
+		printf("Usage: %s <ip> <range> [nth address]\n", argv[0]);
+		return 1;
+	}
+
+	unsigned char ip[4];
+	char mask = atoi(argv[2]);
+	int nth = 0;
+	if(argc == 4) {
+		nth = atoi(argv[3]);
+		if(!nth){
+			fprintf(stderr, "Error on parsing <nth> argv %s\n", argv[3]);
+			exit(1);
+		}
+	}
+	getIp(ip,argv[1]);
+	int binMask = makeMask(mask);
+	unsigned char NA[4];
+	calcNA(NA, ip, binMask);
+	unsigned char NB[4];
+	calcNB(NB, NA, mask);
+	print_nice_ips(ip, mask, binMask, NA, NB);
+
+	for(int i=1; i<nth; ++i){
+		get_next_addr(NB, NA, 0);
+		printf("------------\n");
+		printf("nth: %d\n", i+1);
+		printf("NA: ");
+		printIp(NA);
+		calcNB(NB, NA, mask);
+		printf("NB: ");
+		printIp(NB);
+	}
 
 	return 0;
 }
