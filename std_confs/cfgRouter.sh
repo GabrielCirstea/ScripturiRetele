@@ -5,37 +5,36 @@
 # a se modifica HOSTNAME, IP, MASK
 
 # variabile necesare
-HOSTNAME="R3"
-BANER="Router-ul 3"
+# Variabilele vor fi setate ca env varaibles folosind `export` sau facand source
+# la script
+HOSTNAME=${HOSTNAME-"hostname"}
+BANER=${BANER-"Legatura cu ceva alt router sau switch"}
 DATE=$(date +"%H:%M:%S %d %b %Y")
-DOMAIN="minfo.ro"
-MESAJ="Acesul persoanelor neautorizate este strict interzis"
-IP="8.0.0.0"
-MASK="255.0.0.0"
-HELPER="10.0.0.254"		# serverul DHCP
+DOMAIN=${DOMAIN-"SLA.ro"}
+MESAJ=${MESAJ-"Astazi nu se face mentenanta la echipament"}
+IP=${IP-"8.0.0.0"}
+MASK=${MASK-"255.0.0.0"}
+HELPER=${HELPER-"10.0.0.254"}		# serverul DHCP
 
 # pentru interfata de serial
-SERIAL="0/0/0"
-MESAJSERIAL="Acesul persoanelor neautorizate este strict interzis"
-IPSERIAL="10.0.0.1"
-MASKSERIAL="255.255.255.0"
+SERIAL=${SERIAL-"0/0/0"}
+MESAJSERIAL=${MESAJSERIAL-"Acesul persoanelor neautorizate este strict interzis"}
+IPSERIAL=${IPSERIAL-"10.0.0.1"}
+MASKSERIAL=${MASKSERIAL-"255.255.255.0"}
 
 TEMPLATE_FILE=templateRouter.txt
-OUT_FILE=out.txt
 
 [ -f $TEMPLATE_FILE ] || ( echo "nu e fisierul template" && exit 1)
 
-cp $TEMPLATE_FILE $OUT_FILE
-
-sed -i "s|<hostname>|$HOSTNAME|" $OUT_FILE
-sed -i "s|<banner>|$BANER|" $OUT_FILE
-sed -i "s|<date>|$DATE|" $OUT_FILE
-sed -i "s|<domainName>|$DOMAIN|" $OUT_FILE
-sed -i "s|<mesajDescriere>|$MESAJ|" $OUT_FILE
-sed -i "s|<ip>|$IP|" $OUT_FILE
-sed -i "s|<mask>|$MASK|" $OUT_FILE
-sed -i "s|<serial>|$SERIAL|" $OUT_FILE
-sed -i "s|<mesajDescriereSerial>|$MASK|" $OUT_FILE
-sed -i "s|<ipSerial>|$IPSERIAL|" $OUT_FILE
-sed -i "s|<maskSerial>|$MASKSERIAL|" $OUT_FILE
-sed -i "s|<helper>|$HELPE|" $OUT_FILE
+sed "s|<hostname>|$HOSTNAME|;\
+s|<banner>|$BANER|;\
+s|<date>|$DATE|;\
+s|<domainName>|$DOMAIN|;\
+s|<mesajDescriere>|$MESAJ|;\
+s|<ip>|$IP|;\
+s|<mask>|$MASK|;\
+s|<serial>|$SERIAL|;\
+s|<mesajDescriereSerial>|$MESAJSERIAL|;\
+s|<ipSerial>|$IPSERIAL|;\
+s|<maskSerial>|$MASKSERIAL|;\
+s|<helper>|$HELPER|" $TEMPLATE_FILE
