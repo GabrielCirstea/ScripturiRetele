@@ -6,7 +6,7 @@ BANER="Ne duce spre 'Core network' de la PC2"
 DATE=$(date +"%H:%M:%S %d %b %Y")
 DOMAIN="SLA.ro"
 MESAJ="Legatura cu R2"
-IP="192.168.0.18"
+IP="192.168.0.30"
 MASK="255.255.255.252"
 HELPER="10.45.0.254"
 
