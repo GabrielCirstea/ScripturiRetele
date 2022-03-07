@@ -124,7 +124,9 @@ no shutdown
 end
 ```
 
-## Routing
+# Routing
+
+## Static
 
 ```
 ip route <ip> <mask> <interfata>
@@ -140,4 +142,53 @@ ex: ip route 124.144.96.0 255.255.240 serial 0/0/0
 
 ```
 ip helper-address <ip>
+```
+
+## OSPF
+
+Seteaza interfata de loopback
+
+```
+interface l0
+ip address 1.1.1.1 255.255.255.255
+```
+Activeaza OSPF si adauga retelele ce vor fi anuntate catre alte routere.
+
+```
+router ospf <proc_ID>
+network <ip> <wilcard_mask> area <nr>
+```
+
+wilecard este inversul unei masti de retea: o retea /24: 255.255.255.0 devine
+0.0.0.255
+
+ex:
+
+```
+router ospf 1
+network 192.168.0.0 0.0.0.255 area 0
+```
+
+Truc pentru setarea tuturor interfetelor:
+
+```
+router ospf 1
+network 0.0.0.0 255.255.255.255 area 0
+```
+
+Dezactivare ospf pe loopback
+OSPF face anunturi si pe looback, dar anunturile astea nu ajung nicaieri. Este
+mai bine sa le oprim.
+
+```
+router ospf 1
+passive-interface l0
+```
+
+In OSPF ruta aleasa depinde de costuri, costurile sunt calculate in functie de o
+metrica prestabilita ca si reper, pentru modificarea acesteia:
+
+```
+router ospf <nr>
+auto-cost reference-bandwith <nr_Mbits>
 ```
