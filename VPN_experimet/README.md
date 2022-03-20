@@ -18,7 +18,7 @@ wireguard, pe serverul, de ubuntu in acest caz, se folosește o simplă comandă
 ### cheile de criptare
 
 Este necesară crearea unei perechi de chei pentru criptarea pachetelor.
-Wireguar vine cu o unealtă pentru generarea cheilor `wg genky`
+Wireguar vine cu o unealtă pentru generarea cheilor `wg genkey`
 
 Apoi cheia publică trebuie trimisă clientiilor ce vor sa se conecteze, aceștia
 trebuind să trimită cheilor lor publice server-ului.
