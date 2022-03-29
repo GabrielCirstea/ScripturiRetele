@@ -39,17 +39,4 @@ login local
 exit
 crypto key generate rsa
 
-interface giga 0/0
-description <mesajDescriere>
-ip address <ip> <mask>
-no shutdown
-ip helper-address <helper>
-exit
-
-interface serial <serial>
-description <mesajDescriereSerial>
-ip address <ipSerial> <maskSerial>
-no shutdown
-exit
-exit
-copy running-config startup-config
+do copy running-config startup-config

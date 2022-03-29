@@ -12,29 +12,32 @@ BANER=${BANER-"Legatura cu ceva alt router sau switch"}
 DATE=$(date +"%H:%M:%S %d %b %Y")
 DOMAIN=${DOMAIN-"SLA.ro"}
 MESAJ=${MESAJ-"Astazi nu se face mentenanta la echipament"}
+INTERFACE=${INTERFACE-"giga0/0"}
 IP=${IP-"8.0.0.0"}
 MASK=${MASK-"255.0.0.0"}
 HELPER=${HELPER-"10.0.0.254"}		# serverul DHCP
 
-# pentru interfata de serial
-SERIAL=${SERIAL-"0/0/0"}
-MESAJSERIAL=${MESAJSERIAL-"Acesul persoanelor neautorizate este strict interzis"}
-IPSERIAL=${IPSERIAL-"10.0.0.1"}
-MASKSERIAL=${MASKSERIAL-"255.255.255.0"}
+set_standard()
+{
+	TEMPLATE_FILE=templateRouter.txt
 
-TEMPLATE_FILE=templateRouter.txt
+	[ -f $TEMPLATE_FILE ] || ( echo "nu e fisierul template" && exit 1)
 
-[ -f $TEMPLATE_FILE ] || ( echo "nu e fisierul template" && exit 1)
+	sed "s|<hostname>|$HOSTNAME|;\
+	s|<banner>|$BANER|;\
+	s|<date>|$DATE|;\
+	s|<domainName>|$DOMAIN|;" $TEMPLATE_FILE
+}
 
-sed "s|<hostname>|$HOSTNAME|;\
-s|<banner>|$BANER|;\
-s|<date>|$DATE|;\
-s|<domainName>|$DOMAIN|;\
-s|<mesajDescriere>|$MESAJ|;\
-s|<ip>|$IP|;\
-s|<mask>|$MASK|;\
-s|<serial>|$SERIAL|;\
-s|<mesajDescriereSerial>|$MESAJSERIAL|;\
-s|<ipSerial>|$IPSERIAL|;\
-s|<maskSerial>|$MASKSERIAL|;\
-s|<helper>|$HELPER|" $TEMPLATE_FILE
+set_interface()
+{
+	TEMPLATE_INT_FILE="templateRouterInt.txt"
+
+	[ -f $TEMPLATE_INT_FILE ] || ( echo "nu e fisierul template int" && exit 1)
+
+	sed "s|<int>|$INTERFACE|;\
+	s|<mesajDescriere>|$MESAJ|;\
+	s|<ip>|$IP|;\
+	s|<mask>|$MASK|;\
+	s|<serial>|$SERIAL|;" $TEMPLATE_INT_FILE
+}

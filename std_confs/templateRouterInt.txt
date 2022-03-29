@@ -1,0 +1,5 @@
+interface <int>
+description <mesajDescriere>
+ip address <ip> <mask>
+no shutdown
+exit
