@@ -111,6 +111,17 @@ exit
 
 `crypto key generate rsa`
 
+## Setare log-uri
+
+Setarea pt logg-uri si unui server unde sa fie trimise
+
+```
+configure terminal
+logging host <ip>
+service timestamps log datetime msec
+service timestamps debug datetime msec
+```
+
 ## setarea interfetei - ip, mask
 ```
 interface vlan 1

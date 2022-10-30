@@ -92,6 +92,15 @@ end
 copy running-config startup-config
 ```
 
+## Logg-uri
+
+```
+configure terminal
+logging host <ip>
+service timestamps log datetime msec
+service timestamps debug datetime msec
+```
+
 ## Atle interfete
 
 ```
@@ -191,4 +200,13 @@ metrica prestabilita ca si reper, pentru modificarea acesteia:
 ```
 router ospf <nr>
 auto-cost reference-bandwith <nr_Mbits>
+```
+
+Ex:
+
+```
+router ospf 1
+network 192.168.10.0 0.0.0.31 area 0
+network 10.10.10.8 0.0.0.3 area 0
+area 0 authentication message-digest
 ```
